@@ -67,4 +67,5 @@ for(var i=1; i<21; i++){
 
 var a = pc.use - 1;
 if(pc.use > 10){ a += 3; }
-draw_sprite_stretched(imgCursor, 0, 48 * a, room_height - 48, 48, 48);
+var c = playerCanCastSelected() ? c_white : c_dkgrey;
+draw_sprite_ext(imgCursor, 0, 48 * a, room_height - 48, 4, 4, 0, c, 1);

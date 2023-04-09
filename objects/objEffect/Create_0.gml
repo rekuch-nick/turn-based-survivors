@@ -7,3 +7,5 @@ fade = 0;
 cd = 30;
 col = [c_white, c_blue];
 colIndex = 0;
+flicker = false;
+follow = noone;

@@ -28,6 +28,7 @@ chargeCD = 0;
 chargeMax = 60;
 chargeGain = 0;
 
+flying = false;
 
 stun = 0;
 wait = 0;

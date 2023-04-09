@@ -31,8 +31,8 @@ if(mouse_wheel_up()){ dir = -1; }
 if(dir != 0){
 	while(true){
 		use += dir;
-		if(use < 0){ use = 20; }
-		if(use > 20){ use = 0; }
+		if(use < 1){ use = 20; }
+		if(use > 20){ use = 1; }
 		if(act[use] != ""){ break; }
 	}
 }
@@ -81,9 +81,8 @@ if(xIn != 0 || yIn != 0){
 if(lMouseClick){
 	if(mouse_y >= 48 && mouse_y < room_height - 48){
 	
-		var canCast = true;
-		if(mp < actCost[use]){ canCast = false; }
-		if(actCD[use] > 0){ canCast = false; }
+		var canCast = playerCanCastSelected();
+		
 	
 		if(canCast){
 			mp -= actCost[use];

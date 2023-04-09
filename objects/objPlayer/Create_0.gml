@@ -11,11 +11,13 @@ hpMax = 100;
 regenCD = 0;
 regenMax = 180;
 regenGain = 1;
-mp = 10;
-mpMax = 10;
+mp = 25;
+mpMax = 25;
 chargeCD = 0;
 chargeMax = 60;
 chargeGain = 1;
+
+flying = false;
 
 xp = 0;
 xpMax = 100;
@@ -43,7 +45,7 @@ for(var n=1; n<21; n++){
 	actCD[n] = 0;
 	actCDMax[n] = 60;
 	actForceTime[n] = 15;
-	actSimple[n] = true;
+	
 	
 	/*if(choose(true, true, false)){
 		act[n] = "Slash";
@@ -62,17 +64,34 @@ actCost[1] = 1;
 actCD[1] = 0;
 actCDMax[1] = 15;
 actForceTime[1] = 15;
-actSimple[1] = true;
+
 
 
 act[2] = "Cross Blade";
 actIcon[2] = imgCrossBlade;
 actCol[2] = c_aqua;
-actCost[2] = 4;
+actCost[2] = 10;
 actCD[2] = 0;
 actCDMax[2] = 60 * 10;
 actForceTime[2] = 15;
-actSimple[2] = true;
+
+
+act[3] = "Knife Throw";
+actIcon[3] = imgKnives;
+actCol[3] = c_aqua;
+actCost[3] = 2;
+actCD[3] = 0;
+actCDMax[3] = 15;
+actForceTime[3] = 15;
+
+act[13] = "Mana Potion";
+actIcon[13] = imgPotion;
+actCol[13] = c_aqua;
+actCost[13] = 0;
+actCD[13] = 0;
+actCDMax[13] = 60;
+actForceTime[13] = 15;
+
 
 
 use = 1;

@@ -7,10 +7,10 @@ follow = noone;
 xOff = 0; yOff = 0;
 moveSpeed = 8;
 aly = -1;
-dis = room_width * 2;
 
-col[0] = c_red;
-col[1] = c_orange;
+
+
+col = [c_blue, c_aqua]
 colIndex = 0;
 
 aniCD = 2;
@@ -19,3 +19,5 @@ aniCDMax = 2;
 hits = [];
 hitIndex = 0;
 hitsMax = 1;
+
+rot = 0;

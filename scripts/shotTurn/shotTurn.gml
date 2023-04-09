@@ -10,6 +10,13 @@ function shotTurn(){
 	x += xs;
 	y += ys;
 	
+	image_angle += rot;
+	
+	if(drift){
+		x += choose(-1, 0, 1);
+		y += choose(-1, 0, 1);
+	}
+	
 	if(follow != noone){
 		x = follow.x + xOff;
 		y = follow.y + yOff;

@@ -23,6 +23,9 @@ function killCharacter(c){
 	with(objShot){
 		if(follow == c){ follow = noone; dis = 0; }
 	}
+	with(objEffect){
+		if(follow == c){ follow = noone; dis = 0; }
+	}
 	
 	instance_destroy(c);
 }
