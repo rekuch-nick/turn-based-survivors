@@ -8,9 +8,9 @@ xOff = 0; yOff = 0;
 moveSpeed = 8;
 aly = -1;
 
+pow = 10;
 
-
-col = [c_blue, c_aqua]
+col = [c_blue, c_aqua];
 colIndex = 0;
 
 aniCD = 2;

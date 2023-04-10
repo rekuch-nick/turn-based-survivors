@@ -5,7 +5,10 @@ function killCharacter(c){
 	
 	if(c.hp < 1){
 		
-		if(c.aly == -1){ playerXPGain(c.xpOnKill); }
+		if(c.aly == -1){ 
+			pc.xpToGain += c.xpOnKill;
+			//playerXPGain(c.xpOnKill); 
+		}
 		
 		for(var i=0; i<c.deathChips; i++){
 			var a = x + irandom_range(-sprite_width/2, sprite_width/2);

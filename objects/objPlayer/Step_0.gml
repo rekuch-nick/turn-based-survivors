@@ -78,7 +78,7 @@ if(xIn != 0 || yIn != 0){
 
 
 
-if(lMouseClick){
+if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot) ){
 	if(mouse_y >= 48 && mouse_y < room_height - 48){
 	
 		var canCast = playerCanCastSelected();
@@ -108,5 +108,19 @@ if(lMouseClick){
 if(ww.activeFrames > 0){
 	for(var i=1; i<21; i++){
 		actCD[i] = clamp(actCD[i] - 1, 0, actCDMax[i]);
+	}
+}
+
+if(xpToGain > 0){
+	xpToGain --;
+	playerXPGain(1);
+}
+
+
+if(debug){
+	if(keyboard_check_direct(vk_f1)){ playerXPGain(xpMax); }
+	if(keyboard_check_direct(vk_f2)){ 
+		ww.msPast = 59;
+		ww.secPast = 59;
 	}
 }

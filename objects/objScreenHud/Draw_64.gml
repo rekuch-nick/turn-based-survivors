@@ -69,3 +69,25 @@ var a = pc.use - 1;
 if(pc.use > 10){ a += 3; }
 var c = playerCanCastSelected() ? c_white : c_dkgrey;
 draw_sprite_ext(imgCursor, 0, 48 * a, room_height - 48, 4, 4, 0, c, 1);
+
+
+
+var a = room_width - 48;
+for(var i=0; i<60; i++){
+	if(pc.passive[i] != ""){
+		var p = getSpell(pc.passive[i]);
+		
+		draw_sprite_ext(p.icon, 0, a+24, 24, 4, 4, 0, p.iconCol, 1);
+		
+		a -= 48;
+	}
+}
+
+
+
+
+
+
+
+
+

@@ -2,9 +2,15 @@ if(aly == other.aly){ return; }
 if(arrayContains(hits, other)){ return; }
 
 
-hurtCharacter(other, 10, "", 0, "");
+hurtCharacter(other, pow, "", 0, "");
 
 
+if(aly == 1 && forceDrop != noone && irandom_range(0, 99) < forceDropChance){
+	var s = instance_create_depth(x, y, ww.layerPup, objPup);
+	s.sprite_index = forceDrop;
+	s.col = forceDropCol;
+	if(forceDropHone){ s.hone = true; }
+}
 
 
 
