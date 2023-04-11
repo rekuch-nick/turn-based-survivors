@@ -40,6 +40,8 @@ function getPlayerInput(){
 	
 	spaceHold = keyboard_check(vk_space);
 	
+	pauseClick = keyboard_check_pressed(vk_escape);
+	
 	for(var i=1; i<11; i++){
 		var s = string(i);
 		if(i == 10){ s = "0"; }

@@ -228,7 +228,7 @@ function getSpell(n){
 	
 	
 	
-	
+	s.holdToShoot = false;
 	
 	return s;
 }

@@ -28,10 +28,24 @@ chargeCD = 0;
 chargeMax = 60;
 chargeGain = 0;
 
+pow = 0;
+agi = 0;
+tou = 0;
+int = 0;
+spi = 0;
+critPlus = 0;
+CDR = 0;
+procPlus = 0;
+
+spellRes = 0;
+spellPierce = 0;
+
 flying = false;
 
 stun = 0;
 wait = 0;
+
+
 
 
 actCD = 0;

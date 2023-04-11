@@ -3,4 +3,5 @@ function eatPlayerInput(){
 	
 	pc.lMouseClick = false;
 	pc.rMouseClick = false;
+	pc.pauseClick = false;
 }

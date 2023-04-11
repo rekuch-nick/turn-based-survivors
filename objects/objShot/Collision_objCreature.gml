@@ -1,8 +1,9 @@
 if(aly == other.aly){ return; }
 if(arrayContains(hits, other)){ return; }
 
-
-hurtCharacter(other, pow, "", 0, "");
+var dam = pow;
+if(isCrit){ dam *= 2; }
+hurtCharacter(other, dam, "", 0, "");
 
 
 if(aly == 1 && forceDrop != noone && irandom_range(0, 99) < forceDropChance){

@@ -1,4 +1,5 @@
 draw_set_font(fntPlain);
+randomize();
 
 layerPup = -150;
 layerMob = -200;

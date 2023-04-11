@@ -1,6 +1,7 @@
 getPlayerInput();
 if(instance_number(objScreen) > 0){ return; }
 
+
 lastUse = use;
 if(shiftHold){
 	for(var i=1; i<11; i++){
@@ -86,7 +87,7 @@ if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot) ){
 	
 		if(canCast){
 			mp -= actCost[use];
-			actCD[use] = actCDMax[use];
+			actCD[use] = clamp(ceil(actCDMax[use] * (100 - CDR / 100)), 15, actCDMax[use]);
 			
 			
 			if(ww.activeFrames < getSpell(act[use]).waitTime){
@@ -114,6 +115,13 @@ if(ww.activeFrames > 0){
 if(xpToGain > 0){
 	xpToGain --;
 	playerXPGain(1);
+}
+
+
+
+if(pauseClick){
+	eatPlayerInput();
+	instance_create_depth(0, 0, -1000, objScreenPause);
 }
 
 

@@ -42,14 +42,17 @@ function characterShoot(spl){
 			s.aly = aly;
 			
 			
-			s.pow = spl.pow; /// add damage formula ///
+			s.pow = spl.pow + floor(spl.pow * (pow / 10));
+			
+			var critRoll = irandom_range(1, 100) + critPlus;
+			s.isCrit = critRoll >= 101;
 			
 			
 			
 			if(spl.melee && characterHasBuff(id, "Cleave")){
 				s.image_xscale *= 1.5;
 				s.image_yscale *= 1.5;
-				s.pow *= 1.5;
+				//s.pow *= 1.5;
 			}
 			
 			
