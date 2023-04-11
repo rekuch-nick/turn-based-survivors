@@ -58,11 +58,7 @@ for(var i=0; i<5; i++){
 	circleLevel[i] = 0;
 }
 
-for(var i=0; i<5; i++){
-	circle[i] = i; 
-	circleLevel[i] = 1;
-	level ++;
-}
+//for(var i=0; i<5; i++){ circle[i] = i; circleLevel[i] = 1; level ++; }
 
 
 

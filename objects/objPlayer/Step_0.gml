@@ -73,6 +73,14 @@ if(xIn != 0 || yIn != 0){
 		if(object_index == objPlayer){ continue; }
 		x += -other.xs;
 		y += -other.ys;
+		
+		if(object_index == objPit){
+			if(x < -room_width * 3){ x = room_width * 4; }
+			if(x > room_width * 4){ x = -room_width * 3; }
+			
+			if(y < -room_height * 2){ y = room_height * 3; }
+			if(y > room_height * 3){ y = -room_height * 2; }
+		}
 	}
 	
 }
