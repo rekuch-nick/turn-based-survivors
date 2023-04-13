@@ -2,8 +2,10 @@ if(aly == other.aly){ return; }
 if(arrayContains(hits, other)){ return; }
 
 var dam = pow;
+var p = pie;
 if(isCrit){ dam *= 2; }
-hurtCharacter(other, dam, "", 0, "");
+hurtCharacter(other, dam, "", p, "");
+if(other.object_index != objPlayer){ other.stun += stunTime; }
 
 
 if(aly == 1 && forceDrop != noone && irandom_range(0, 99) < forceDropChance){

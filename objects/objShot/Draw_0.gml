@@ -1,3 +1,4 @@
+if(firstFrame){ return; }
 aniCD --;
 if(aniCD < 1){
 	aniCD = aniCDMax;

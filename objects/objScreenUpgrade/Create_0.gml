@@ -1,7 +1,7 @@
 image_xscale = 4; image_yscale = 4;
 txt = "";
 mode = 1;
-
+image_alpha = 0;
 
 if(pc.circle[4] == -1){
 	txt = "Choose a Circle";
@@ -11,6 +11,7 @@ if(pc.circle[4] == -1){
 		
 		var s = instance_create_depth(a, b, depth - 1, objButton);
 		s.sprite_index = imgButtonSmall;
+		s.image_alpha = 0;
 		s.txt = ww.circle[i].nam;
 		s.col = ww.circle[i].col;
 		s.num = i;
@@ -28,6 +29,7 @@ if(pc.circle[4] == -1){
 	for(var i=0; i<5; i++){
 		var s = instance_create_depth(170, 240 + 120 * i, depth - 1, objButton);
 		s.sprite_index = imgButtonThin;
+		s.image_alpha = 0;
 		s.txt = ww.circle[pc.circle[i]].nam + "\n";
 		if(pc.cStat[i] == 0){ s.txt += "(Power)"; }
 		if(pc.cStat[i] == 1){ s.txt += "(Agility)"; }

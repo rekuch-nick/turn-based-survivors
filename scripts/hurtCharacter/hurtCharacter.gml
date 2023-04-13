@@ -1,5 +1,10 @@
 function hurtCharacter(c, dam, ele, pie, note){
 	
+	var arm = c.armor;
+	arm -= pie;
+	if(arm > 0){ dam -= floor( dam * (arm / 100) ); }
+	
+	
 	c.hp -= dam;
 	
 	

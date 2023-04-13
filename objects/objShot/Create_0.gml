@@ -22,3 +22,4 @@ hitsMax = 1;
 
 rot = 0;
 isCrit = false;
+pie = 0;

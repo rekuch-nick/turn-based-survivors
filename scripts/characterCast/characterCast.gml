@@ -1,4 +1,4 @@
-function characterShoot(spl){
+function characterCast(spl){
 	if(spl.nam == ""){ return; }
 	
 	if(spl.simpleShot){
@@ -47,7 +47,15 @@ function characterShoot(spl){
 			var critRoll = irandom_range(1, 100) + critPlus;
 			s.isCrit = critRoll >= 101;
 			
+			s.pie = spl.pie; // + (int * 5);
 			
+			if(spl.angleByCaster){
+				if(image_xscale < 0){ s.image_xscale *= -1; }
+			}
+			
+			s.spl = spl;
+			s.stunTime = spl.stunTime;
+			s.pointAtMouse = spl.pointAtMouse;
 			
 			if(spl.melee && characterHasBuff(id, "Cleave")){
 				s.image_xscale *= 1.5;
@@ -62,6 +70,11 @@ function characterShoot(spl){
 				} else {
 					s.xt = pc.x; s.yt = pc.y; // replace with chosen target script
 				}
+			}
+			
+			if(spl.offsetFromTarget > 0){
+				s.xt += irandom_range(-spl.offsetFromTarget, spl.offsetFromTarget);
+				s.yt += irandom_range(-spl.offsetFromTarget, spl.offsetFromTarget);
 			}
 			
 			
@@ -174,6 +187,117 @@ function characterShoot(spl){
 		}
 		
 	} /// end of simple effect ///
+	
+	if(spl.isTeleport){
+		
+		var a = x; var b = y-24;
+		var s = instance_create_depth(a, b, ww.layerEff, objEffect);
+		s.ys = -1;
+		s.fade = .03;
+		s.cd = 180;
+		s.sprite_index = spl.img;
+		
+		
+		
+		var xOld = x; var yOld = y;
+		
+		if(spl.target == "target"){
+			if(object_index == objPlayer){
+				s.xt = mouse_x; s.yt = mouse_y;
+			} else {
+				s.xt = pc.x; s.yt = pc.y; // replace with chosen target script
+				
+				if(spl.teleType == "run"){ 
+					// some run code
+				}
+			}
+			
+			var ms = 20; var dis = 0;
+			
+			var angle = arctan2(s.yt - y, s.xt - x);
+			var xss = cos(angle) * ms;
+			var yss = sin(angle) * ms;
+			
+			while(dis < spl.teleRange){ 
+				if(object_index == objPlayer){
+					playerMove(xss, yss);
+				} else {
+					x += xss; y += yss; 
+				}	
+				dis += ms; 
+			}
+			
+			while( !characterCanMove(0, 0) ){
+				if(object_index == objPlayer){
+					playerMove(xss, yss);
+				} else {
+					x += xss; y += yss; 
+				}
+				dis += ms;
+				if(dis > spl.teleRange * 2){
+					//fizzle
+					x = xOld; y  = yOld;
+					
+					break;
+				}
+			}
+			
+			
+			
+			
+			var a = x; var b = y-24;
+			var s = instance_create_depth(a, b, ww.layerEff, objEffect);
+			s.ys = -1;
+			s.fade = .03;
+			s.cd = 180;
+			s.sprite_index = spl.img;
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+	} /// end of isTeleport ///
+	
+	
+	
+	
+	
+	if(spl.isSummon){
+		for(var i=0; i<spl.multiSummon; i++){
+			
+			var s = instance_create_depth(x, y, ww.layerMob, spl.summonKind);
+			s.aly = aly;
+			s.col = col;
+			s.summoned = true;
+			s.pow = pow;
+			s.agi = agi;
+			s.tou = tou;
+			s.int = int;
+			s.spi = spi;
+			s.moveType = spl.summonMove;
+			s.summonTime = spl.summonTime;
+			
+			with(s){
+				var dis = 0;
+				while(!characterCanMove(0, 0)){
+					dis ++;
+					x = other.x + irandom_range(-dis, dis);
+					y = other.y + irandom_range(-dis, dis);
+				}
+			}
+			
+			
+		}
+		
+	} /// end of is summon ///
+	
+	
 	
 	
 	

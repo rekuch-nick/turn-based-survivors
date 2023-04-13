@@ -17,6 +17,7 @@ kill = false;
 canLastDiag = false;
 deathChips = 20;
 
+armor = 0;
 hp = 10; hpMax = 10;
 mp = 10; mpMax = 10;
 xpOnKill = 4;
@@ -28,6 +29,9 @@ chargeCD = 0;
 chargeMax = 60;
 chargeGain = 0;
 
+
+summoned = false;
+summonTime = 60 * 30;
 pow = 0;
 agi = 0;
 tou = 0;

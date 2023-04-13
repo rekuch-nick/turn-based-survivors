@@ -14,6 +14,7 @@ function getSpell(n){
 		offsetByInput: false,
 		aimByInput: false,
 		multiShot: 1,
+		offsetFromTarget: 0,
 		rot: 0,
 		multiMethod: "rad",
 		multiRad: 100,
@@ -21,6 +22,7 @@ function getSpell(n){
 		drift: false,
 		col: [c_white],
 		simpleEffect: false,
+		isTeleport: false,
 		lineTo: noone,
 		lineOff: 0,
 		linePass: false,
@@ -29,7 +31,6 @@ function getSpell(n){
 		icon: imgBlank,
 		iconCol: c_white,
 		mpCost: 1,
-		forceTime: 15,
 		pcCD: 15,
 		startOff: 0,
 		projectile: false,
@@ -41,6 +42,19 @@ function getSpell(n){
 		forceDropChance: 100,
 		forceDropCol: c_white,
 		forceDropHone: false,
+		stunTime: 10,
+		pointAtMouse: false,
+		angleByCaster: false,
+		teleType: "chase",
+		teleRange: 200,
+		stopShots: false,
+		stoppableShot: true,
+		pie: 0,
+		isSummon: false,
+		multiSummon: 1,
+		summonKind: noone,
+		summonMove: "foe",
+		summonTime: 1800,
 	}
 	
 	
@@ -59,14 +73,53 @@ function getSpell(n){
 		s.icon = imgKnife;
 		s.iconCol = c_aqua;
 		s.mpCost = 0;
-		s.forceTime = 15;
 		s.pcCD = 15;
 		s.col = [c_blue, c_aqua];
 		s.holdToShoot = true;
 		s.melee = true;
 	}
 	
+	if(n == "Bite"){
+		s.img = imgWolfBite;
+		s.col = [c_white, c_red];
+		//s.tiltByInput = true;
+		s.angleByCaster = true;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.dis = 15;
+		s.followCaster = true;
+		s.moveSpeed = 1;
+		s.pow = 2;
+		s.maxTargets = 2;
+		s.offsetByInput = true;
+		s.icon = imgChip;
+		s.iconCol = c_white;
+		s.mpCost = 0;
+		s.pcCD = 15;
+		s.holdToShoot = true;
+		s.melee = true;
+		
+	}
 	
+	//Bone Spear
+	if(n == "Bone Spear"){
+		s.img = imgBoneSpear;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.dis = 15;
+		s.followCaster = true;
+		s.moveSpeed = 1;
+		s.pow = 10;
+		s.maxTargets = 8;
+		s.icon = imgBoneSpearIcon;
+		s.iconCol = c_white;
+		s.mpCost = 1;
+		s.pcCD = 15;
+		s.col = [c_white, c_dkgray];
+		s.holdToShoot = true;
+		s.melee = true;
+		s.pointAtMouse = true;
+	}
 	
 	
 	if(n == "Knife Throw"){
@@ -80,10 +133,26 @@ function getSpell(n){
 		s.icon = imgKnives;
 		s.iconCol = c_aqua;
 		s.mpCost = 2;
-		s.forceTime = 15;
 		s.pcCD = 15;
 		s.col = [c_blue, c_aqua];
 		s.holdToShoot = true;
+	}
+	
+	if(n == "Wave"){
+		s.img = imgWave;
+		s.col = [c_blue, c_aqua];
+		s.simpleShot = true;
+		s.waitTime = 20;
+		s.moveSpeed = 10;
+		s.pow = 4;
+		s.maxTargets = 20;
+		s.aimByInput = true;
+		s.icon = imgWave;
+		s.iconCol = c_aqua;
+		s.mpCost = 1;
+		s.pcCD = 20;
+		s.holdToShoot = true;
+		s.angleByCaster = true;
 	}
 	
 	if(n == "Cross Blade"){
@@ -102,7 +171,6 @@ function getSpell(n){
 		s.icon = imgCrossBlade;
 		s.iconCol = c_aqua;
 		s.mpCost = 10;
-		s.forceTime = 15;
 		s.pcCD = 60 * 10;
 		s.col = [c_blue, c_aqua];
 	}
@@ -115,7 +183,6 @@ function getSpell(n){
 		s.icon = imgPotion;
 		s.iconCol = c_aqua;
 		s.mpCost = 0;
-		s.forceTime = 15;
 		s.pcCD = 60 * 60;
 		s.col = [c_blue, c_aqua];
 	}
@@ -128,9 +195,22 @@ function getSpell(n){
 		s.icon = imgPotion;
 		s.iconCol = c_white;
 		s.mpCost = 0;
-		s.forceTime = 15;
 		s.pcCD = 60 * 60;
 		s.col = [c_white, c_aqua];
+	}
+	
+	if(n == "Shadow Step"){
+		s.simpleShot = false;
+		s.isTeleport = true;
+		
+		s.img = imgPortCircle;
+		s.col = [c_purple, c_fuchsia];
+
+		s.icon = imgPortCircle;
+		s.iconCol = c_purple;
+		s.mpCost = 4;
+		s.pcCD = 60 * 5;
+		
 	}
 	
 	if(n == "Fire Bolt"){
@@ -144,13 +224,30 @@ function getSpell(n){
 		s.icon = imgFireboltIcon;
 		s.iconCol = c_white;
 		s.mpCost = 2;
-		s.forceTime = 15;
 		s.pcCD = 15;
 		s.maxTargets = 4;
 		s.lineTo = imgFireChip;
 		s.startPoint = "target";
 		s.lineOff = 10;
 		s.holdToShoot = true;
+	}
+	
+	if(n == "Razor Leaf"){
+		s.img = imgLeaf;
+		s.col = [c_green, c_green];
+		s.offsetFromTarget = 100;
+		s.simpleShot = true;
+		s.multiShot = 10;
+		s.waitTime = 30;
+		s.moveSpeed = 8;
+		s.pow = 2;
+		s.icon = imgLeaf;
+		s.iconCol = c_green;
+		s.mpCost = 2;
+		s.pcCD = 15;
+		s.holdToShoot = true;
+		s.projectile = true;
+		s.multiRad = 40;
 	}
 	
 	if(n == "Lightning Bolt"){
@@ -165,7 +262,6 @@ function getSpell(n){
 		s.icon = imgLightning;
 		s.iconCol = c_yellow;
 		s.mpCost = 5;
-		s.forceTime = 30;
 		s.pcCD = 60 * 3;
 		s.maxTargets = 1;
 		s.lineTo = imgLightning;
@@ -185,7 +281,6 @@ function getSpell(n){
 		s.icon = imgCrystalShard;
 		s.iconCol = c_aqua;
 		s.mpCost = 1;
-		s.forceTime = 10;
 		s.pcCD = 10;
 		s.col = [c_blue, c_aqua];
 		s.startOff = 10;
@@ -193,19 +288,55 @@ function getSpell(n){
 		s.holdToShoot = true;
 	}
 	
+	if(n == "Spark"){
+		s.img = imgChip;
+		s.col = [c_yellow, c_white];
+		s.tiltByInput = true;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.moveSpeed = 10;
+		s.pow = 10;
+		s.icon = imgChip;
+		s.iconCol = c_yellow;
+		s.mpCost = 1;
+		s.pcCD = 10;
+		s.startOff = 10;
+		s.projectile = true;
+		s.holdToShoot = true;
+	}
+	
+	if(n == "Crush"){
+		s.img = imgStone;
+		var cc = #7F4E0C;
+		s.col = [cc];
+		s.tiltByInput = true;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.moveSpeed = 8;
+		s.pow = 10;
+		s.icon = imgStone;
+		s.iconCol = #7F4E0C;
+		s.mpCost = 2;
+		s.pcCD = 10;
+		s.startOff = 10;
+		s.projectile = true;
+		s.holdToShoot = true;
+		s.dis = 250;
+		s.stopShots = true;
+	}
+	
 	if(n == "Drain"){
 		s.img = imgDrainChip;
 		s.simpleShot = true;
 		s.waitTime = 20;
 		s.moveSpeed = 8;
-		s.pow = 10;
+		s.pow = 7;
 		s.icon = imgDrainChip;
 		s.iconCol = c_white;
-		s.mpCost = 3;
-		s.forceTime = 15;
+		s.mpCost = 2;
 		s.pcCD = 20;
 		s.col = [c_white];
-		s.dis = 150;
+		//s.dis = 250;
 		s.projectile = true;
 		s.holdToShoot = true;
 		s.forceDrop = imgHPGlobSmall;
@@ -222,6 +353,24 @@ function getSpell(n){
 	}
 	
 	
+	if(n == "Wolfcall"){
+		s.simpleShot = false;
+		
+		s.img = imgWolf;
+		s.col = c_white;
+		
+		s.icon = imgWolf;
+		s.iconCol = c_white;
+		s.mpCost = 1;
+		s.pcCD = 60 * 5;
+		s.col = [c_white, c_red];
+		
+		s.isSummon = true;
+		s.multiSummon = 1;
+		s.summonKind = objPet;
+		s.summonMove = "foe";
+		s.summonTime = 30 * 60;
+	}
 	
 	
 	
@@ -229,6 +378,7 @@ function getSpell(n){
 	
 	
 	s.holdToShoot = false;
+	s.holdToShoot = true;
 	
 	return s;
 }

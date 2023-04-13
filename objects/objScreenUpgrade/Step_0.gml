@@ -1,7 +1,12 @@
 
 
 
-
+if(image_alpha < 1){
+	image_alpha += .01;
+	image_alpha += .09;
+	with(objButton){ image_alpha = other.image_alpha; }
+	return;
+}
 
 
 if(pc.lMouseClick){
@@ -30,7 +35,7 @@ if(pc.lMouseClick){
 		instance_destroy();
 		eatPlayerInput();
 		
-		if(mode == 1){
+		if(mode == 1){/*
 			var s = instance_create_depth(0, 0, -1000, objScreenTextBox);
 			s.hed = "You Bonded " + ww.circle[pc.circle[i]].nam;
 			
@@ -43,7 +48,7 @@ if(pc.lMouseClick){
 			
 			s.txt = "This Circle has bonded to the " + string(an) + " attribute, it will increase as your mastery of this Circle does.";
 			s.txt += "\n\n";
-			s.txt += getLevelUpDesc(ww.circle[pc.circle[i]].nam, 1);
+			s.txt += getLevelUpDesc(ww.circle[pc.circle[i]].nam, 1);*/
 		}
 		playerSetStats();
 		

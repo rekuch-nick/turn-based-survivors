@@ -46,7 +46,24 @@ if(activeFrames > 0){
 		var c = 30;
 		var t = objGoon;
 		
-		if(spawnCharge >= 100){
+		if(minPast < 1){ 
+			t = objMinion;
+			if(secPast > 40){ c = 10; }
+		}
+		
+		
+		if(minPast >= 4){ 
+			if(secPast > 40){ c = 15; }
+		}
+		
+		
+		
+		if(minPast >= 7){ 
+			t = objGoonArmor;
+		}
+		
+		
+		if(spawnCharge >= 100 && minPast > 1){
 			c = 100;
 			t = objChunk;
 		}
@@ -60,6 +77,14 @@ if(activeFrames > 0){
 		}
 		
 		spawnCharge -= c;
-		instance_create_depth(a, b, layerMob, t);
+		var m = instance_create_depth(a, b, layerMob, t);
+		var i = 0;
+		with(m){
+			i ++;
+			while(!characterCanMove(0, 0)){
+				m.x += irandom_range(-i, i);
+				m.y += irandom_range(-i, i);
+			}
+		}
 	}
 }

@@ -21,7 +21,7 @@ function mobTurn(){
 	
 	
 	
-	
+	if(summoned){ summonTime --; }
 	if(stun > 0){ stun --; return; }
 	if(actCD > 0){ actCD --; }
 	if(wait > 0){ wait --; return; }
@@ -32,6 +32,14 @@ function mobTurn(){
 		
 		if(moveType == "player"){
 			xt = pc.x; yt = pc.y;
+		}
+		
+		if(moveType == "foe"){
+			xt = x; yt = y;
+			var m = getClosestEnemy();
+			if(m != noone){
+				xt = m.x; yt = m.y;
+			}
 		}
 		
 		
@@ -65,7 +73,7 @@ function mobTurn(){
 		var i = irandom_range(0, array_length(acts) - 1);
 		var act = acts[i];
 		
-		characterShoot(getSpell(act));
+		characterCast(getSpell(act));
 		wait = getSpell(act).waitTime;
 	}
 	
@@ -102,6 +110,7 @@ function mobTurn(){
 	
 
 	
+	if(summoned && summonTime <= 0){ kill = true; }
 	
 	if(				x < -room_width ||
 					x > 2*room_width ||
@@ -109,6 +118,7 @@ function mobTurn(){
 					y > 2*room_height ){
 		kill = true;
 	}
+	
 	
 	
 	

@@ -9,6 +9,19 @@ isBomb = true;
 col = c_maroon;
 
 
+if(irandom_range(1, 1400) == 1){
+	isBomb = false;
+	col = c_green;
+	
+	acts = ["Razor Leaf"];
+	actCDMax = 180;
+	actCD = actCDMax;
+	
+	hp = 20; hpMax = hp;
+	
+}
+
+
 if(irandom_range(1, 6) == 1){
 	isBomb = false;
 	col = c_orange;
@@ -34,19 +47,20 @@ if(irandom_range(1, 20) == 1){
 }
 
 
-/*
-if(irandom_range(1, 20) == 1){
+
+if(irandom_range(1, 10) == 1){
 	isBomb = false;
 	col = c_blue;
 	
-	acts = ["Cross Blade", "", ""];
-	actCDMax = 180;
+	acts = ["Cross Blade", "Shadow Step", "Shadow Step", "", "", "", ""];
+	actCDMax = 60;
 	actCD = actCDMax;
 	
 	hp = 30; hpMax = hp;
 	
 }
 
+/*
 
 if(irandom_range(1, 30) == 1){
 	isBomb = false;

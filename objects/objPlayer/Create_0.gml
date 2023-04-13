@@ -2,6 +2,7 @@ event_inherited();
 randomize();
 image_xscale = 4; image_yscale = 4;
 depth = -210;
+XX = x; YY = y;
 aly = 1;
 
 col = c_white;
@@ -12,6 +13,7 @@ regenCD = 0; chargeCD = 0;
 
 flying = false;
 
+waitXp = 0;
 xp = 0;
 xpMax = 100;
 level = 1;
@@ -37,7 +39,6 @@ for(var n=1; n<121; n++){
 	actCost[n] = n;
 	actCD[n] = 0;
 	actCDMax[n] = 60;
-	actForceTime[n] = 15;
 	
 	
 	

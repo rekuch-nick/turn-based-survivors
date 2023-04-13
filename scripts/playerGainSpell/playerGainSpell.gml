@@ -16,7 +16,6 @@ function playerGainSpell(t){
 		pc.actCost[n] = s.mpCost;
 		pc.actCD[n] = 0;
 		pc.actCDMax[n] = s.pcCD;
-		pc.actForceTime[n] = s.forceTime;
 	} else {
 		var n = 0;
 		while(pc.passive[n] != ""){

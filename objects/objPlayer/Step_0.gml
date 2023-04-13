@@ -68,20 +68,9 @@ if(xIn != 0 || yIn != 0){
 	if(!characterCanMove(xs, 0)){ xs = 0; }
 	if(!characterCanMove(0, ys)){ ys = 0; }
 	
+	playerMove(xs, ys);
 	
-	with(objScrollable){
-		if(object_index == objPlayer){ continue; }
-		x += -other.xs;
-		y += -other.ys;
-		
-		if(object_index == objPit){
-			if(x < -room_width * 3){ x = room_width * 4; }
-			if(x > room_width * 4){ x = -room_width * 3; }
-			
-			if(y < -room_height * 2){ y = room_height * 3; }
-			if(y > room_height * 3){ y = -room_height * 2; }
-		}
-	}
+	
 	
 }
 
@@ -95,14 +84,17 @@ if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot) ){
 	
 		if(canCast){
 			mp -= actCost[use];
-			actCD[use] = clamp(ceil(actCDMax[use] * (100 - CDR / 100)), 15, actCDMax[use]);
 			
+			var wt = clamp(ceil(actCDMax[use] * (100 - CDR / 100)), 15, actCDMax[use]);
 			
-			if(ww.activeFrames < getSpell(act[use]).waitTime){
-				ww.activeFrames = getSpell(act[use]).waitTime;
+			actCD[use] = wt;
+			
+			var ff = clamp(wt, 10, 30);
+			if(ww.activeFrames < ff){
+				ww.activeFrames = ff;
 			}
 			
-			characterShoot(getSpell(act[use]));
+			characterCast(getSpell(act[use]));
 			
 			
 			
@@ -120,9 +112,13 @@ if(ww.activeFrames > 0){
 	}
 }
 
-if(xpToGain > 0){
-	xpToGain --;
-	playerXPGain(1);
+if(waitXp > 0){
+	waitXp --;
+} else {
+	if(xpToGain > 0){
+		xpToGain --;
+		playerXPGain(1);
+	}
 }
 
 

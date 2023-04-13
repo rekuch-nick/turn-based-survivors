@@ -29,10 +29,10 @@ function defineCircles(){
 	}
 	
 	circle[4] = {
-		nam: "Shadow",
+		nam: "Dark",
 		col: c_navy,
 		num: 4,
-		first: "",
+		first: "Shadow Step",
 	}
 	
 	circle[5] = {
@@ -43,17 +43,17 @@ function defineCircles(){
 	}
 	
 	circle[6] = {
-		nam: "Druid",
-		col: c_green,
+		nam: "Bone",
+		col: c_white,
 		num: 6,
-		first: "",
+		first: "Bone Spear",
 	}
 	
 	circle[7] = {
 		nam: "Water",
 		col: c_blue,
 		num: 7,
-		first: "Water of Life",
+		first: "Wave",
 	}
 	
 	circle[8] = {
@@ -81,29 +81,29 @@ function defineCircles(){
 		first: "",
 	}
 	circle[12] = {
-		nam: "Luck",
+		nam: "Leaf",
 		col: c_lime,
 		num: 12,
-		first: "",
+		first: "Razor Leaf",
 	}
 	circle[13] = {
-		nam: "Luck",
-		col: c_lime,
+		nam: "Light",
+		col: c_yellow,
 		num: 13,
-		first: "",
+		first: "Spark",
 	}
 	
 	circle[14] = {
-		nam: "Luck",
-		col: c_lime,
+		nam: "Stone",
+		col: c_orange,
 		num: 14,
-		first: "",
+		first: "Crush",
 	}
 	circle[15] = {
-		nam: "Luck",
-		col: c_lime,
+		nam: "Beast",
+		col: c_red,
 		num: 15,
-		first: "",
+		first: "Wolfcall",
 	}
 	circle[16] = {
 		nam: "Luck",
