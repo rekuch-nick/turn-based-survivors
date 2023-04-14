@@ -23,3 +23,6 @@ hitsMax = 1;
 rot = 0;
 isCrit = false;
 pie = 0;
+buff = noone;
+procChance = 0;
+extraBleed = false;

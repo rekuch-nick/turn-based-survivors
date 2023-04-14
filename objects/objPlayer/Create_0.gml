@@ -28,7 +28,7 @@ debug = true;
 
 lastXIn = 1;
 lastYIn = 0;
-
+ignoreClickTime = 0;
 
 getPlayerInput();
 

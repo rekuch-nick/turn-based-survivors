@@ -31,5 +31,6 @@ function killCharacter(c){
 		if(follow == c){ follow = noone; dis = 0; }
 	}
 	
+	ds_list_destroy(c.buffs);
 	instance_destroy(c);
 }

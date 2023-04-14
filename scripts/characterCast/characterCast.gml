@@ -1,7 +1,7 @@
 function characterCast(spl){
 	if(spl.nam == ""){ return; }
 	
-	if(spl.simpleShot){
+	if(spl.simpleShot || spl.teleStrike){
 		
 		
 		for(var i=0; i<spl.multiShot; i++){
@@ -44,8 +44,9 @@ function characterCast(spl){
 			
 			s.pow = spl.pow + floor(spl.pow * (pow / 10));
 			
-			var critRoll = irandom_range(1, 100) + critPlus;
+			var critRoll = irandom_range(1, 100) + critPlus + spl.critPlus;
 			s.isCrit = critRoll >= 101;
+			s.critMod = spl.critMod;
 			
 			s.pie = spl.pie; // + (int * 5);
 			
@@ -54,13 +55,18 @@ function characterCast(spl){
 			}
 			
 			s.spl = spl;
+			s.buff = spl.buff;
 			s.stunTime = spl.stunTime;
 			s.pointAtMouse = spl.pointAtMouse;
+			s.procChance = spl.procChance + (int * 2);
+			
+			s.push = spl.push;
 			
 			if(spl.melee && characterHasBuff(id, "Cleave")){
-				s.image_xscale *= 1.5;
-				s.image_yscale *= 1.5;
+				//s.image_xscale *= 1.5;
+				//s.image_yscale *= 1.5;
 				//s.pow *= 1.5;
+				s.extraBleed = true;
 			}
 			
 			
@@ -186,9 +192,13 @@ function characterCast(spl){
 			hp = clamp(hp + n, 0, hpMax);
 		}
 		
+		if(spl.buff != noone){
+			characterGainBuff(id, spl.buff);
+		}
+		
 	} /// end of simple effect ///
 	
-	if(spl.isTeleport){
+	if(spl.isTeleport || spl.teleStrike){
 		
 		var a = x; var b = y-24;
 		var s = instance_create_depth(a, b, ww.layerEff, objEffect);
@@ -196,6 +206,7 @@ function characterCast(spl){
 		s.fade = .03;
 		s.cd = 180;
 		s.sprite_index = spl.img;
+		if(spl.teleStrike){ s.sprite_index = imgBlank; }
 		
 		
 		

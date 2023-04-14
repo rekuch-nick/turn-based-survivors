@@ -60,13 +60,13 @@ function defineCircles(){
 		nam: "Wind",
 		col: c_white,
 		num: 8,
-		first: "",
+		first: "Gust",
 	}
 	circle[9] = {
-		nam: "Luck",
+		nam: "Tricks",
 		col: c_lime,
 		num: 9,
-		first: "",
+		first: "Venom Strike",
 	}
 	circle[10] = {
 		nam: "Rage",
@@ -78,7 +78,7 @@ function defineCircles(){
 		nam: "Time",
 		col: c_white,
 		num: 11,
-		first: "",
+		first: "Haste",
 	}
 	circle[12] = {
 		nam: "Leaf",
@@ -106,22 +106,22 @@ function defineCircles(){
 		first: "Wolfcall",
 	}
 	circle[16] = {
-		nam: "Luck",
-		col: c_lime,
+		nam: "Swarm",
+		col: c_fuchsia,
 		num: 16,
-		first: "",
+		first: "Spider Plague",
 	}
 	circle[17] = {
-		nam: "Luck",
-		col: c_lime,
+		nam: "Sword",
+		col: c_navy,
 		num: 17,
-		first: "",
+		first: "After Slash",
 	}
 	circle[18] = {
-		nam: "Luck",
-		col: c_lime,
+		nam: "Bow",
+		col: #331505,
 		num: 18,
-		first: "",
+		first: "Shoot",
 	}
 	circle[19] = {
 		nam: "Luck",

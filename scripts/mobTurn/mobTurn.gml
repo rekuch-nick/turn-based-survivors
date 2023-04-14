@@ -15,13 +15,32 @@ function mobTurn(){
 	}
 	
 	
-	
+	for(var i=0; i<ds_list_size(buffs); i++){
+		var b = ds_list_find_value(buffs, i);
+		
+		if(ww.msPast == 0){
+			if(b.dot){
+				hp -= b.pow * b.stacks;
+			}
+		}
+		
+		b.dur --;
+		if(b.dur < 1){
+			if(b.stacks > 1){
+				b.stacks --;
+				b.dur = b.durMax;
+			} else {
+				ds_list_delete(buffs, i);
+			}
+		}
+	}
 	
 	if(object_index == objPlayer){ return; }
 	
 	
 	
 	if(summoned){ summonTime --; }
+	if(characterHasBuff(id, "Web")){ return; }
 	if(stun > 0){ stun --; return; }
 	if(actCD > 0){ actCD --; }
 	if(wait > 0){ wait --; return; }
@@ -83,8 +102,18 @@ function mobTurn(){
 	
 	var xss = xs;
 	var yss = ys;
-	if(!characterCanMove(xs, 0)){ xss = 0; }
-	if(!characterCanMove(0, ys)){ yss = 0; }
+	
+	if(characterHasBuff(id, "Haste")){ xss *= 2; yss *= 2; }
+	
+	if(xPush > 0){ xss += xPush; xPush --; }
+	if(xPush < 0){ xss += xPush; xPush ++; }
+	if(abs(xPush) < 1){ xPush = 0; }
+	if(yPush > 0){ yss += yPush; yPush --; }
+	if(yPush < 0){ yss += yPush; yPush ++; }
+	if(abs(yPush) < 1){ yPush = 0; }
+	
+	if(!characterCanMove(xss, 0)){ xss = 0; }
+	if(!characterCanMove(0, yss)){ yss = 0; }
 	
 	x += xss;
 	y += yss;
@@ -108,7 +137,7 @@ function mobTurn(){
 	}
 	
 	
-
+	if(hp <= 0){ kill = true; }
 	
 	if(summoned && summonTime <= 0){ kill = true; }
 	

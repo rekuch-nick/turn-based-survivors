@@ -13,8 +13,8 @@ function shotTurn(){
 	image_angle += rot;
 	
 	if(drift){
-		x += choose(-1, 0, 1);
-		y += choose(-1, 0, 1);
+		x += choose(-5, 0, 5);
+		y += choose(-5, 0, 5);
 	}
 	
 	if(spl.stopShots){

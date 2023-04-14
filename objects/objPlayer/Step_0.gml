@@ -1,4 +1,5 @@
 getPlayerInput();
+ignoreClickTime = clamp(ignoreClickTime - 1, 0, ignoreClickTime);
 if(instance_number(objScreen) > 0){ return; }
 
 
@@ -54,6 +55,8 @@ if(xIn != 0 || yIn != 0){
 	
 	var eSpeed = moveSpeed;
 	
+	if(characterHasBuff(id, "Web")){ eSpeed = ceil(moveSpeed / 2); }
+	
 	xs = xIn * eSpeed;
 	ys = yIn * eSpeed;
 	
@@ -64,11 +67,23 @@ if(xIn != 0 || yIn != 0){
 	
 	
 	
+	var xss = xs;
+	var yss = ys;
 	
-	if(!characterCanMove(xs, 0)){ xs = 0; }
-	if(!characterCanMove(0, ys)){ ys = 0; }
+	if(characterHasBuff(id, "Haste")){ xss *= 2; yss *= 2; }
 	
-	playerMove(xs, ys);
+	if(xPush > 0){ xss += xPush; xPush --; }
+	if(xPush < 0){ xss += xPush; xPush ++; }
+	if(abs(xPush) < 1){ xPush = 0; }
+	if(yPush > 0){ yss += yPush; yPush --; }
+	if(yPush < 0){ yss += yPush; yPush ++; }
+	if(abs(yPush) < 1){ yPush = 0; }
+	
+	
+	if(!characterCanMove(xss, 0)){ xss = 0; }
+	if(!characterCanMove(0, yss)){ yss = 0; }
+	
+	playerMove(xss, yss);
 	
 	
 	
@@ -76,7 +91,7 @@ if(xIn != 0 || yIn != 0){
 
 
 
-if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot) ){
+if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot && ignoreClickTime < 1) ){
 	if(mouse_y >= 48 && mouse_y < room_height - 48){
 	
 		var canCast = playerCanCastSelected();
@@ -85,11 +100,21 @@ if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot) ){
 		if(canCast){
 			mp -= actCost[use];
 			
-			var wt = clamp(ceil(actCDMax[use] * (100 - CDR / 100)), 15, actCDMax[use]);
+			
+		
+			
+			//var wtReduce = floor(actCDMax[use] * ( 100 - (100 - CDR) / 100));
+			//show_debug_message(wtReduce)
+			//var wtReduceMax = 
+			//var wt = clamp(actCDMax[use] - wtReduce, 10, actCDMax[use]);
+			
+			var wt = ceil( actCDMax[use] * ((100 - CDR) / 100) );
 			
 			actCD[use] = wt;
 			
-			var ff = clamp(wt, 10, 30);
+			var ff = wt;
+			if(ff > 30){ ff = 15; }
+			//clamp(wt, 10, 30);
 			if(ww.activeFrames < ff){
 				ww.activeFrames = ff;
 			}

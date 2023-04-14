@@ -47,6 +47,7 @@ function getSpell(n){
 		angleByCaster: false,
 		teleType: "chase",
 		teleRange: 200,
+		teleStrike: false,
 		stopShots: false,
 		stoppableShot: true,
 		pie: 0,
@@ -55,6 +56,11 @@ function getSpell(n){
 		summonKind: noone,
 		summonMove: "foe",
 		summonTime: 1800,
+		buff: noone,
+		procChance: 50,
+		push: 0,
+		critPlus: 0,
+		critMod: 2,
 	}
 	
 	
@@ -79,6 +85,28 @@ function getSpell(n){
 		s.melee = true;
 	}
 	
+	if(n == "Venom Strike"){
+		s.img = imgKnife;
+		s.col = [c_green, c_lime];
+		s.tiltByInput = true;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.dis = 15;
+		s.followCaster = true;
+		s.moveSpeed = 1;
+		s.pow = 5;
+		s.maxTargets = 1;
+		s.offsetByInput = true;
+		s.icon = imgKnife;
+		s.iconCol = c_green;
+		s.mpCost = 1;
+		s.pcCD = 15;
+		s.holdToShoot = true;
+		s.melee = true;
+		s.procChance = 100;
+		s.buff = getBuff("Poison");
+	}
+	
 	if(n == "Bite"){
 		s.img = imgWolfBite;
 		s.col = [c_white, c_red];
@@ -98,7 +126,49 @@ function getSpell(n){
 		s.pcCD = 15;
 		s.holdToShoot = true;
 		s.melee = true;
-		
+	}
+	
+	if(n == "Poison Bite"){
+		s.img = imgWolfBite;
+		s.col = [c_white, c_red];
+		//s.tiltByInput = true;
+		s.angleByCaster = true;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.dis = 15;
+		s.followCaster = true;
+		s.moveSpeed = 1;
+		s.pow = 2;
+		s.maxTargets = 2;
+		s.offsetByInput = true;
+		s.icon = imgChip;
+		s.iconCol = c_white;
+		s.mpCost = 0;
+		s.pcCD = 15;
+		s.holdToShoot = true;
+		s.melee = true;
+		s.buff = getBuff("Poison");
+		s.procChance = 40;
+	}
+	
+	
+	if(n == "Web"){
+		s.img = imgWeb;
+		s.col = [c_white, c_grey];
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.dis = 15;
+		s.followCaster = true;
+		s.moveSpeed = 1;
+		s.pow = 2;
+		s.maxTargets = 2;
+		s.offsetByInput = true;
+		s.icon = imgWeb;
+		s.iconCol = c_white;
+		s.mpCost = 0;
+		s.pcCD = 15;
+		s.holdToShoot = true;
+		s.buff = getBuff("Web");
 	}
 	
 	//Bone Spear
@@ -144,11 +214,29 @@ function getSpell(n){
 		s.simpleShot = true;
 		s.waitTime = 20;
 		s.moveSpeed = 10;
-		s.pow = 4;
+		s.pow = 5;
 		s.maxTargets = 20;
 		s.aimByInput = true;
 		s.icon = imgWave;
 		s.iconCol = c_aqua;
+		s.mpCost = 1;
+		s.pcCD = 20;
+		s.holdToShoot = true;
+		s.angleByCaster = true;
+	}
+	
+	if(n == "Gust"){
+		s.img = imgGust;
+		s.col = [c_dkgrey, c_grey];
+		s.simpleShot = true;
+		s.waitTime = 20;
+		s.moveSpeed = 10;
+		s.pow = 4;
+		s.push = 12;
+		s.maxTargets = 20;
+		s.aimByInput = true;
+		s.icon = imgGust;
+		s.iconCol = c_gray;
 		s.mpCost = 1;
 		s.pcCD = 20;
 		s.holdToShoot = true;
@@ -199,6 +287,19 @@ function getSpell(n){
 		s.col = [c_white, c_aqua];
 	}
 	
+	if(n == "Haste"){
+		s.simpleShot = false;
+		s.img = imgClock;
+		s.col = c_red;
+		s.simpleEffect = true;
+		s.icon = imgClock;
+		s.iconCol = c_red;
+		s.mpCost = 4;
+		s.pcCD = 60 * 60;
+		s.col = [c_white, c_red];
+		s.buff = getBuff("Haste");
+	}
+	
 	if(n == "Shadow Step"){
 		s.simpleShot = false;
 		s.isTeleport = true;
@@ -212,6 +313,47 @@ function getSpell(n){
 		s.pcCD = 60 * 5;
 		
 	}
+	
+	
+	if(n == "After Slash"){
+		s.img = imgKnife;
+		s.tiltByInput = true;
+		s.waitTime = 15;
+		s.dis = 15;
+		
+		s.moveSpeed = 1;
+		s.pow = 10;
+		s.maxTargets = 4;
+		s.offsetByInput = true;
+		
+		s.mpCost = 0;
+		s.col = [c_blue, c_navy];
+		s.holdToShoot = true;
+		s.melee = true;
+		
+		s.simpleShot = false;
+		s.teleStrike = true;
+		
+		s.multiShot = 6;
+		s.rot = -25;
+		s.multiMethod = "rad";
+		s.multiRad = 40;
+		s.drift = true;
+		s.dis = 120;
+		
+		s.icon = imgCrossBlade;
+		s.iconCol = c_navy;
+		
+		//s.img = imgPortCircle;
+		//s.col = [c_purple, c_fuchsia];
+
+		//s.icon = imgPortCircle;
+		//s.iconCol = c_purple;
+		s.mpCost = 4;
+	}
+	
+	
+	
 	
 	if(n == "Fire Bolt"){
 		s.img = imgFireSmall;
@@ -305,6 +447,24 @@ function getSpell(n){
 		s.holdToShoot = true;
 	}
 	
+	if(n == "Shoot"){
+		s.img = imgArrow;
+		s.col = [c_orange, c_white];
+		s.pointAtMouse = true;
+		s.simpleShot = true;
+		s.waitTime = 15;
+		s.moveSpeed = 10;
+		s.pow = 10;
+		s.icon = imgBow;
+		s.iconCol = c_orange;
+		s.mpCost = 1;
+		s.pcCD = 20;
+		s.projectile = true;
+		s.holdToShoot = true;
+		s.critPlus = 10;
+		s.critMod = 3;
+	}
+	
 	if(n == "Crush"){
 		s.img = imgStone;
 		var cc = #7F4E0C;
@@ -368,6 +528,25 @@ function getSpell(n){
 		s.isSummon = true;
 		s.multiSummon = 1;
 		s.summonKind = objPet;
+		s.summonMove = "foe";
+		s.summonTime = 30 * 60;
+	}
+	
+	if(n == "Spider Plague"){
+		s.simpleShot = false;
+		
+		s.img = imgSpider;
+		s.col = c_white;
+		
+		s.icon = imgSpider;
+		s.iconCol = c_fuchsia;
+		s.mpCost = 4;
+		s.pcCD = 60 * 5;
+		s.col = [c_white, c_fuchsia];
+		
+		s.isSummon = true;
+		s.multiSummon = 3;
+		s.summonKind = objSpider;
 		s.summonMove = "foe";
 		s.summonTime = 30 * 60;
 	}

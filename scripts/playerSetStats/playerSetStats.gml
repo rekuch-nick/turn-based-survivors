@@ -14,13 +14,14 @@ function playerSetStats(){
 	
 	
 	pc.mpMax = 25 + (5 * pc.int);
-	pc.procPlus = 0 + (10 * pc.int); // percent of init chance increased, i.e. 10% means a 20% is a 22%
-	pc.spellPierce = 0 + (5 * pc.int);
+	pc.critPlus = 0 + (5 * pc.int);
+	// +2% raw proc per level
+	
 	
 	pc.chargeMax = 60;
 	pc.chargeGain = 1 + (1 * pc.spi);
 	
-	pc.critPlus = 0 + (5 * pc.agi);
+	
 	pc.CDR = 0 + (5 * pc.agi);
 	
 	

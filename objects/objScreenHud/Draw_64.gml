@@ -83,8 +83,19 @@ for(var i=0; i<60; i++){
 	}
 }
 
-
-
+var aSpot = room_width - 48;
+for(var i=0; i<ds_list_size(pc.buffs); i++){
+	var b = ds_list_find_value(pc.buffs, i);
+	draw_rectangle_color(aSpot + 0, 48, aSpot + 48, 96, #1E1F4C, #1E1F4C, #1E1F4C, #1E1F4C, false);
+	draw_rectangle_color(aSpot + 4, 52, aSpot + 44, 92, c_black, c_black, c_black, c_black, false);
+	var bMod = 40 - (40 * (b.dur / b.durMax) );
+	draw_rectangle_color(aSpot + 4, 52 + bMod, aSpot + 44, 52 + 40, c_navy, c_navy, c_navy, c_navy, false);
+	draw_sprite_ext(b.icon, 0, aSpot + 24, 72, 4, 4, 0, b.iconCol, 1);
+	if(b.stacks > 1){
+		draw_text(aSpot + 4, 74, b.stacks);
+	}
+	aSpot -= 48;
+}
 
 
 

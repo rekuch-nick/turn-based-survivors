@@ -42,14 +42,15 @@ CDR = 0;
 procPlus = 0;
 
 spellRes = 0;
-spellPierce = 0;
+
 
 flying = false;
 
 stun = 0;
 wait = 0;
 
-
+xPush = 0;
+yPush = 0;
 
 
 actCD = 0;
@@ -63,3 +64,4 @@ isBomb = false;
 //isBomb = true; //
 bombPow = 10;
 
+buffs = ds_list_create();

@@ -21,10 +21,19 @@ if(irandom_range(1, 12) == 1){
 	actCD = actCDMax;	
 }
 
+if(irandom_range(1, 6) == 1){
+	isBomb = false;
+	col = c_green;
+	
+	acts = ["Venom Strike"];
+	actCDMax = 60 * 4;
+	actCD = actCDMax;	
+}
+
 
 if(irandom_range(1, 120) == 1){
 	isBomb = false;
-	col = c_green;
+	col = c_lime;
 	
 	acts = ["Wolfcall"];
 	actCDMax = 60 * 7;

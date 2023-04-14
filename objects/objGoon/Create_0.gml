@@ -9,7 +9,7 @@ isBomb = true;
 col = c_maroon;
 
 
-if(irandom_range(1, 1400) == 1){
+if(irandom_range(1, 400) == 1){
 	isBomb = false;
 	col = c_green;
 	
@@ -34,6 +34,35 @@ if(irandom_range(1, 6) == 1){
 	
 }
 
+if(irandom_range(1, 600) == 1){
+	isBomb = false;
+	col = c_fuchsia;
+	
+	acts = ["Spider Plague"];
+	actCDMax = 180;
+	actCD = actCDMax;
+	
+	hp = 20; hpMax = hp;
+	
+}
+
+
+
+if(irandom_range(1, 400) == 1){
+	isBomb = false;
+	col = c_red;
+	
+	acts = ["Slash", "Slash", "Slash", "Slash", "Haste"];
+	actCDMax = 120;
+	actCD = actCDMax;
+	
+	hp = 20; hpMax = hp;
+	
+}
+
+
+
+
 if(irandom_range(1, 20) == 1){
 	isBomb = false;
 	col = c_aqua;
@@ -48,7 +77,7 @@ if(irandom_range(1, 20) == 1){
 
 
 
-if(irandom_range(1, 10) == 1){
+if(irandom_range(1, 19) == 1){
 	isBomb = false;
 	col = c_blue;
 	
@@ -60,9 +89,9 @@ if(irandom_range(1, 10) == 1){
 	
 }
 
-/*
 
-if(irandom_range(1, 30) == 1){
+
+if(irandom_range(1, 130) == 1){
 	isBomb = false;
 	col = c_fuchsia;
 	
@@ -74,7 +103,7 @@ if(irandom_range(1, 30) == 1){
 	
 }
 
-*/
+
 
 
 
