@@ -12,7 +12,7 @@ if(pc.circle[4] == -1){
 		var s = instance_create_depth(a, b, depth - 1, objButton);
 		s.sprite_index = imgButtonSmall;
 		s.image_alpha = 0;
-		s.txt = ww.circle[i].nam;
+		s.txt = "\n"+ww.circle[i].nam;
 		s.col = ww.circle[i].col;
 		s.num = i;
 		a += 48 * 3;

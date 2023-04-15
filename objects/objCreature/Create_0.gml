@@ -6,7 +6,7 @@ face = choose(1, -1);
 lastXIn = face;
 lastYIn = 0;
 
-
+justHitByChain = false;
 
 thinkCD = 0;
 thinkCDMax = 120;

@@ -12,6 +12,15 @@ col = c_maroon;
 
 
 
+if(irandom_range(1, 40) == 1){
+	isBomb = false;
+	col = c_dkgray;
+	
+	acts = ["After Slash", "", "", "", ""];
+	actCDMax = 60 * 4;
+	actCD = actCDMax;	
+}
+
 if(irandom_range(1, 12) == 1){
 	isBomb = false;
 	col = c_orange;

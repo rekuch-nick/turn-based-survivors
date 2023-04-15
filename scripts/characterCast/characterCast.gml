@@ -1,11 +1,39 @@
 function characterCast(spl){
 	if(spl.nam == ""){ return; }
 	
+	if(spl.nam == "Wild Spell"){
+		if(pc.druidSpellCD < 1){
+			pc.druidSpellCD = choose(5, 6, 7, 8, 9, 10) * 60;
+			pc.druidSpell = choose("Ice Shard", "Razor Leaf", "Fire Bolt", "Crush", "Spark", "Gust", "Wave");
+		}
+		spl = getSpell(pc.druidSpell);
+	}
+	
 	if(spl.simpleShot || spl.teleStrike){
 		
+		xLastHit = x; yLastHit = y;
+		chaining = false;
 		
 		for(var i=0; i<spl.multiShot; i++){
+			
 			var a = x; var b = y;
+			
+			
+			if(chaining && spl.lineTo != noone){
+				
+				spl.startPoint = "";
+				
+				var tar = getRandomEnemyInRangeFrom(60, spl.chainRange, xLastHit, yLastHit);
+				if(tar != noone){
+					
+					a = tar.x;
+					b = tar.y;
+				} else {
+					return;
+				}
+			}
+			
+			
 			
 			if(spl.startOff > 0){
 				a += irandom_range(-spl.startOff, spl.startOff);
@@ -63,10 +91,14 @@ function characterCast(spl){
 			s.push = spl.push;
 			
 			if(spl.melee && characterHasBuff(id, "Cleave")){
-				//s.image_xscale *= 1.5;
-				//s.image_yscale *= 1.5;
-				//s.pow *= 1.5;
 				s.extraBleed = true;
+			}
+			
+			if(spl.melee && characterHasBuff(id, "Burning Hand")){
+				var roll = irandom_range(1, 100) + (int * 2);
+				if(roll >= 50){
+					s.extraBurn = true;
+				}
 			}
 			
 			
@@ -131,7 +163,16 @@ function characterCast(spl){
 			
 			
 			if(spl.lineTo != noone){
-				var x1 = x; var y1 = y;
+				// the shot object is at a, b
+				// it was shot from object corde if i == 0
+				// else it was shot from last hit cords
+				
+				if(!chaining){
+					var x1 = x; var y1 = y;
+				} else {
+					var x1 = xLastHit; var y1 = yLastHit;
+				}
+				
 				var x2 = a; var y2 = b;
 				
 				var angle = arctan2(y2 - y1, x2 - x1);
@@ -151,12 +192,17 @@ function characterCast(spl){
 					x1 += xs; y1 += ys;
 					
 					if(!spl.linePass){
-						if(collision_point(x1, y1, objCreature, true, true)){
+						if(collision_circle(x1, y1, 6, objCreature, true, true)
+							&& !collision_circle(x1, y1, 6, objCreature, true, true).justHitByChain
+						){
+							collision_circle(x1, y1, 6, objCreature, true, true).justHitByChain = true;
 							s.x = x1; s.y = y1;
 							x2 = x1; y2 = y1;
 						}
 					}
 				}
+				
+				xLastHit = s.x; yLastHit = s.y;
 			}
 			
 			if(spl.projectile){
@@ -166,6 +212,12 @@ function characterCast(spl){
 			}
 			
 			
+			
+			if(spl.lineChain > 0){
+				i --;
+				spl.lineChain --;
+				chaining = true;
+			}
 			
 		} /// end of for multishot ///
 		
@@ -220,6 +272,11 @@ function characterCast(spl){
 				
 				if(spl.teleType == "run"){ 
 					// some run code
+					var angle = arctan2(y - pc.y, x - pc.x);
+					xs = cos(angle) * 200;
+					ys = sin(angle) * 200;
+					s.xt = x + xs;
+					s.yt = y + ys;
 				}
 			}
 			

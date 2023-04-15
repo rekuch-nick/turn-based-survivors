@@ -20,6 +20,10 @@ level = 1;
 xpToGain = 0;
 
 
+druidSpellCD = 0;
+druidSpell = "";
+
+
 canLastDiag = true;
 isBomb = false;
 

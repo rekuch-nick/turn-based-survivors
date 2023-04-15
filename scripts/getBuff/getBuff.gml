@@ -27,6 +27,19 @@ function getBuff(n){
 		b.dot = true;
 	}
 	
+	if(n == "Burning"){
+		b.icon = imgFireSmall;
+		b.iconCol = c_white;
+		b.effect = imgFireSmall;
+		b.effectCol = c_white;
+		b.effectAlpha = .4;
+		b.stacksMax = 10;
+		b.pow = 1;
+		b.dot = true;
+		b.dur = 60 * 20;
+		b.durMax = 60 * 20;
+	}
+	
 	if(n == "Bleed"){
 		b.icon = imgDrop;
 		b.iconCol = c_red;

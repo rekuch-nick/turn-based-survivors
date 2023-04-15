@@ -15,7 +15,7 @@ if(activeFrames > 0){
 		}
 	}
 	
-	
+	pc.druidSpellCD = clamp(pc.druidSpellCD - 1, 0, pc.druidSpellCD);
 	
 	activeFrames --;
 	spawnCharge ++;

@@ -9,6 +9,7 @@ if(buff != noone){
 	}
 }
 if(extraBleed){ characterGainBuff(other, getBuff("Bleed") ); }
+if(extraBurn){ characterGainBuff(other, getBuff("Burning") ); }
 
 var dam = pow;
 var p = pie;

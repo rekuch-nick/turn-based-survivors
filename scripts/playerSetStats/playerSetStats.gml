@@ -8,6 +8,8 @@ function playerSetStats(){
 	
 	
 	
+	
+	
 	pc.hpMax = 100 + (20 * pc.tou);
 	pc.regenMax = 180;
 	pc.regenGain = 1 + (1 * pc.tou);

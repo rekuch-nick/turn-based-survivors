@@ -28,6 +28,7 @@ function getSpell(n){
 		linePass: false,
 		lineToCol: [c_white],
 		lineToSpeed: 20,
+		lineChain: 0,
 		icon: imgBlank,
 		iconCol: c_white,
 		mpCost: 1,
@@ -61,6 +62,7 @@ function getSpell(n){
 		push: 0,
 		critPlus: 0,
 		critMod: 2,
+		chainRange: 400,
 	}
 	
 	
@@ -317,6 +319,7 @@ function getSpell(n){
 	
 	if(n == "After Slash"){
 		s.img = imgKnife;
+		s.col = [c_blue, c_navy];
 		s.tiltByInput = true;
 		s.waitTime = 15;
 		s.dis = 15;
@@ -326,15 +329,16 @@ function getSpell(n){
 		s.maxTargets = 4;
 		s.offsetByInput = true;
 		
-		s.mpCost = 0;
-		s.col = [c_blue, c_navy];
+		s.mpCost = 10;
+		s.pcCD = 60 * 5;
+		
 		s.holdToShoot = true;
 		s.melee = true;
 		
 		s.simpleShot = false;
 		s.teleStrike = true;
 		
-		s.multiShot = 6;
+		s.multiShot = 12;
 		s.rot = -25;
 		s.multiMethod = "rad";
 		s.multiRad = 40;
@@ -343,13 +347,8 @@ function getSpell(n){
 		
 		s.icon = imgCrossBlade;
 		s.iconCol = c_navy;
+		s.teleType = "run";
 		
-		//s.img = imgPortCircle;
-		//s.col = [c_purple, c_fuchsia];
-
-		//s.icon = imgPortCircle;
-		//s.iconCol = c_purple;
-		s.mpCost = 4;
 	}
 	
 	
@@ -398,19 +397,23 @@ function getSpell(n){
 		s.simpleShot = true;
 		s.waitTime = 30;
 		s.moveSpeed = 1;
-		s.lineToSpeed = 30;
+		s.lineToSpeed = 10;
 		s.dis = 30;
 		s.pow = 120;
 		s.icon = imgLightning;
 		s.iconCol = c_yellow;
 		s.mpCost = 5;
 		s.pcCD = 60 * 3;
+		//s.mpCost = 0; s.pcCD = 20; ///////////
 		s.maxTargets = 1;
-		s.lineTo = imgLightning;
+		s.lineTo = imgChip;
 		s.lineToCol = [c_yellow, c_white];
 		s.startPoint = "target";
 		s.lineOff = 3;
 		s.holdToShoot = false;
+		s.lineChain = 2;
+		s.multiMethod = "";
+		s.chainRange = 300;
 	}
 	
 	if(n == "Ice Shard"){
@@ -465,6 +468,20 @@ function getSpell(n){
 		s.critMod = 3;
 	}
 	
+	if(n == "Wild Spell"){
+		
+		s.waitTime = 15;
+		
+		s.icon = imgLeaf;
+		s.iconCol = c_red;
+		
+		s.mpCost = 2;
+		s.pcCD = 20;
+		
+		
+		s.holdToShoot = true;
+	}
+	
 	if(n == "Crush"){
 		s.img = imgStone;
 		var cc = #7F4E0C;
@@ -512,6 +529,12 @@ function getSpell(n){
 		s.iconCol = c_red;
 	}
 	
+	if(n == "Burning Hand"){
+		s.passive = true;
+		s.icon = imgHand;
+		s.iconCol = c_red;
+	}
+	
 	
 	if(n == "Wolfcall"){
 		s.simpleShot = false;
@@ -530,6 +553,25 @@ function getSpell(n){
 		s.summonKind = objPet;
 		s.summonMove = "foe";
 		s.summonTime = 30 * 60;
+	}
+	
+	if(n == "Animate Skeleton"){
+		s.simpleShot = false;
+		
+		s.img = imgHand;
+		s.col = c_white;
+		
+		s.icon = imgHand;
+		s.iconCol = c_white;
+		s.mpCost = 6;
+		s.pcCD = 60 * 5;
+		s.col = [c_white, c_red];
+		
+		s.isSummon = true;
+		s.multiSummon = 1;
+		s.summonKind = objSkelli;
+		s.summonMove = "foe";
+		s.summonTime = 60 * 60;
 	}
 	
 	if(n == "Spider Plague"){

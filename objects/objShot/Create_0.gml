@@ -26,3 +26,4 @@ pie = 0;
 buff = noone;
 procChance = 0;
 extraBleed = false;
+extraBurn = false;

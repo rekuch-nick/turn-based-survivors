@@ -13,6 +13,9 @@ secPast = 0;
 minPast = 0;
 houPast = 0;
 
+
+
+
 defineCircles();
 
 instance_create_depth(0, 0, -1010, objScreenTitle);

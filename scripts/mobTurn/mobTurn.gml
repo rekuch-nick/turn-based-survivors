@@ -1,6 +1,6 @@
 function mobTurn(){
 	
-	
+	justHitByChain = false;
 	
 	regenCD += regenGain;
 	if(regenCD >= regenMax){

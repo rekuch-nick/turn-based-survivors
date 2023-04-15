@@ -101,8 +101,6 @@ if(lMouseClick || (lMouseHold && getSpell(act[use]).holdToShoot && ignoreClickTi
 			mp -= actCost[use];
 			
 			
-		
-			
 			//var wtReduce = floor(actCDMax[use] * ( 100 - (100 - CDR) / 100));
 			//show_debug_message(wtReduce)
 			//var wtReduceMax = 

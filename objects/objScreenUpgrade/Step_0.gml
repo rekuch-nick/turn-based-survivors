@@ -27,6 +27,13 @@ if(pc.lMouseClick){
 		
 		if(mode == 2){
 			pc.circleLevel[b.num] += 1;
+			
+			for(var i=0; i<4; i++){
+				if( ww.circle[b.num].spellLevels[i] == pc.circleLevel[b.num] ){
+					playerGainSpell( ww.circle[b.num].spells[i] );
+				}
+			}
+			
 		}
 		
 	
